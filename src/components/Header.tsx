@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Box, Typography, IconButton, Icon, Drawer, Divider } from "@mui/material"
+import { Box, Typography, IconButton, Drawer, Divider } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
 import SettingsIcon from '@mui/icons-material/Settings';
 import NightlightIcon from '@mui/icons-material/Nightlight';
-import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import LoginIcon from '@mui/icons-material/Login';
@@ -27,7 +26,7 @@ const Header = () => {
             maxWidth="100%"
             marginLeft="0"
             textAlign="center"
-            bgcolor="#705a5a"
+            bgcolor="#001e28"
         >
             <Box
                 display="flex"
@@ -36,23 +35,26 @@ const Header = () => {
                 height="60%"
                 padding="15px 15px 15px 18px"
                 zIndex="22"
-                borderBottom="1px solid #7e6868"
+                borderBottom="1px solid #001e28"
+
             >
-                <Box display="flex" gap="0.5rem" width="100%">
-                    <IconButton onClick={() => {
-                        navigate("/")
-                    }}>
-                        <SportsSoccerIcon />
-                    </IconButton>
+                <Box display="flex" gap="0.5rem" maxWidth="100%">
                     <IconButton
                         edge="start"
                         aria-label="open drawer"
                         onClick={toggleDrawer(true)}
+
                         sx={{
                             mr: 2,
                             display: {
                                 xs: 'block',
-                            }
+                                color: '#eee',
+
+                            },
+                            borderRadius: '8px',
+                            boxSizing: 'border-box',
+                            backgroundColor: 'rgb(0 0 0 / 54%)'
+
                         }}
                     >
                         <MenuIcon />
@@ -69,7 +71,7 @@ const Header = () => {
                         <Box sx={{
                             p: 2,
                             height: 1,
-                            backgroundColor: "#523939"
+                            backgroundColor: "#1b3f4b"
                         }}>
                             <IconButton sx={{ mb: 2 }}>
                                 <CloseIcon onClick={toggleDrawer(false)} />
@@ -78,6 +80,7 @@ const Header = () => {
                             <Box sx={{ mb: 2 }}>
                                 <IconButton>
                                     <SettingsIcon />
+                                    <Typography fontSize="20px" variant="h5"> Settings </Typography>
                                 </IconButton>
 
                             </Box>
@@ -85,6 +88,7 @@ const Header = () => {
                             <Box sx={{ mb: 2 }}>
                                 <IconButton>
                                     <NightlightIcon />
+                                    <Typography fontSize="20px" variant="h5"> Dark Mode </Typography>
                                 </IconButton>
                             </Box>
 
@@ -92,15 +96,38 @@ const Header = () => {
 
                     </Drawer>
                 </Box>
-                <Box display="flex" width="100%" justifyContent="flex-end">
 
-                    <IconButton>
-                        <SearchIcon />
+                {/* The middle part */}
+
+                <Box display="flex" width="100%" justifyContent="center" alignItems="center">
+                    <IconButton onClick={() => navigate('/')}>
+                        <Typography color="#eee" fontSize="23px" variant="h5">SportsLive</Typography>
                     </IconButton>
-                    <IconButton onClick={() => {
+                </Box>
+
+                {/* The right side of the header */}
+
+                <Box display="flex" gap="0.5rem" width="100%" justifyContent="flex-end">
+
+                    <IconButton sx={{
+                        color: '#eee',
+                        backgroundColor: 'rgb(0 0 0 / 54%)', borderRadius: '8px',
+                        boxSizing: 'border-box',
+                    }}>
+                        <SearchIcon />
+                    </IconButton >
+                    <IconButton sx={{
+                        color: '#eee', backgroundColor: 'rgb(0 0 0 / 54%)', borderRadius: '8px',
+                        boxSizing: 'border-box',
+                        gap: '0.1rem',
+                        
+                    }} onClick={() => {
                         navigate('/login')
                     }}>
                         <LoginIcon />
+                        <Typography>
+                            Login
+                        </Typography>
                     </IconButton>
                 </Box>
             </Box>
